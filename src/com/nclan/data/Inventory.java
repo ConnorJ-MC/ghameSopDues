@@ -80,12 +80,12 @@ public class Inventory {
         return allGames;
     }
 
-//    public Game individualSearch(Game g) {
-//        for (Game b : allGames) {
-//            if (g.getName().equals(b.getName()) && g.getConsole().equals(b.getConsole())) {
-//                return b;
-//            }
-//        }
-//        return g;
-//    }
+    public Game individualSearch(Game g) {
+        for (Game b : allGames) {
+            if (g.getName().equals(b.getName()) && g.getConsole().equals(b.getConsole())) {
+                return b;
+            }
+        }
+        return g;
+    }
 }

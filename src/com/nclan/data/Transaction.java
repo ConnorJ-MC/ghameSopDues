@@ -68,12 +68,13 @@ public class Transaction {
 
     public boolean purchase(Game g, Customer c) {
         Inventory inv = Inventory.getInstance();
+        Game b = inv.individualSearch(g);
         double discount = c.isDiscountEligible()
-                ? Math.round(g.getPrice() * 0.90 * 100.0) / 100.0
-                : g.getPrice();
+                ? b.getPrice() * 0.90
+                : b.getPrice();
 
         if (!inv.removeStock(g)) return false;
-        docTransactions("Purchase", g, c, discount);
+        docTransactions("Purchase", b, c, discount);
         c.setDiscountEligible(false);
         return true;
     }
