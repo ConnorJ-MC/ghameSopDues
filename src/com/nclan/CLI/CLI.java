@@ -190,8 +190,6 @@ public class CLI {
         int password = Integer.parseInt(readIn.nextLine());
 
         if (train.managePassword(password)) {
-            inv = Inventory.getInstance();
-            train = Transaction.getInstance();
             showMenu(ManageItems);
             int choice = getUserInput(1, ManageItems.length);
 

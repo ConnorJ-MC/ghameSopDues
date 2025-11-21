@@ -48,7 +48,8 @@ public class Inventory {
             if (g.getName().equals(b.getName()) && g.getConsole().equals(b.getConsole())) {
                 if (b.getQuantity() - 1 > 0) b.setQuantity(b.getQuantity() - 1);
                 else allGames.remove(b);
-            } return true;
+                return true;
+            }
         }
         return false;
     }
@@ -58,7 +59,8 @@ public class Inventory {
             if (g.getName().equals(b.getName()) && g.getConsole().equals(b.getConsole())) {
                 if (b.getQuantity() - number > 0) b.setQuantity(b.getQuantity() - number);
                 else allGames.remove(b);
-            } return true;
+                return true;
+            }
         }
         return false;
     }
@@ -87,5 +89,19 @@ public class Inventory {
             }
         }
         return g;
+    }
+
+    public boolean nameSearch(String n) {
+        for (Game b : allGames) {
+            if (n.equals(b.getName())) return true;
+        }
+        return false;
+    }
+
+    public boolean consoleSearch(String c) {
+        for (Game b : allGames) {
+            if (c.equals(b.getConsole())) return true;
+        }
+        return false;
     }
 }

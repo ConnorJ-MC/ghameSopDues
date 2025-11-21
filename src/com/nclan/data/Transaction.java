@@ -73,7 +73,9 @@ public class Transaction {
                 ? b.getPrice() * 0.90
                 : b.getPrice();
 
-        if (!inv.removeStock(g)) return false;
+        if (!inv.removeStock(b)) {
+            return false;
+        }
         docTransactions("Purchase", b, c, discount);
         c.setDiscountEligible(false);
         return true;
@@ -106,6 +108,6 @@ public class Transaction {
     }
 
     public boolean managePassword(int p) {
-        return p == 1234;
+        return p == 3020;
     }
 }
