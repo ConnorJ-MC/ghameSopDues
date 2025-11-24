@@ -231,14 +231,6 @@ public class CLI {
                 return;
             }
 
-            System.out.println("when was it released");
-            String releaseIn = readIn.nextLine();
-            if (releaseIn.isBlank() || !releaseIn.matches("-?\\d+")) {
-                System.err.println("you need to enter a valid year");
-                return;
-            }
-            int release = Integer.parseInt(releaseIn);
-
             System.out.println("how many copies");
             String quantityIn = readIn.nextLine();
             if (quantityIn.isBlank() || !quantityIn.matches("-?\\d+")) {
@@ -247,15 +239,7 @@ public class CLI {
             }
             int quantity = Integer.parseInt(quantityIn);
 
-            System.out.println("what is its price?");
-            String priceIn = readIn.nextLine();
-            if (priceIn.isBlank() || !priceIn.matches("-?\\d+(\\.\\d+)?")) {
-                System.err.println("you need to enter a valid price");
-                return;
-            }
-            double price = Double.parseDouble(priceIn);
-
-            Game g = new Game(name, console, release, quantity, price);
+            Game g = new Game(name, console, 0, 1, 0);
             if (inv.removeStock(g, quantity)) System.out.println("stock removed!");
 
         } while (YesNoUserResponse("remove more stock?"));
@@ -303,7 +287,7 @@ public class CLI {
             }
             double price = Double.parseDouble(priceIn);
 
-            Game g = new Game(name, console, release, quantity, price);
+            Game g = new Game(name, console, release, 1, price);
             if (inv.addStock(g, quantity)) System.out.println("stock added!");
 
         } while (YesNoUserResponse("add more stock?"));

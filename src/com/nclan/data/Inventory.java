@@ -32,6 +32,7 @@ public class Inventory {
     }
 
     public boolean addStock(Game g, int amount) {
+        if (amount == 0) amount = g.getQuantity();
         for (Game b : allGames) {
             if (g.getName().equals(b.getName()) && g.getConsole().equals(b.getConsole())) {
                 b.setQuantity(Math.min(b.getQuantity() + amount, 10));
@@ -54,10 +55,11 @@ public class Inventory {
         return false;
     }
 
-    public boolean removeStock(Game g, int number) {
+    public boolean removeStock(Game g, int amount) {
+        if (amount == 0) amount = g.getQuantity();
         for (Game b : allGames) {
             if (g.getName().equals(b.getName()) && g.getConsole().equals(b.getConsole())) {
-                if (b.getQuantity() - number > 0) b.setQuantity(b.getQuantity() - number);
+                if (b.getQuantity() - amount > 0) b.setQuantity(b.getQuantity() - amount);
                 else allGames.remove(b);
                 return true;
             }
@@ -89,19 +91,5 @@ public class Inventory {
             }
         }
         return g;
-    }
-
-    public boolean nameSearch(String n) {
-        for (Game b : allGames) {
-            if (n.equals(b.getName())) return true;
-        }
-        return false;
-    }
-
-    public boolean consoleSearch(String c) {
-        for (Game b : allGames) {
-            if (c.equals(b.getConsole())) return true;
-        }
-        return false;
     }
 }

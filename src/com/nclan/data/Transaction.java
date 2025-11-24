@@ -59,9 +59,10 @@ public class Transaction {
 
     public boolean tradeIn(Game g, Customer c) {
         Inventory inv = Inventory.getInstance();
+        Game b = inv.individualSearch(g);
 
         if (!inv.addStock(g)) return false;
-        docTransactions("Trade in", g, c, 0);
+        docTransactions("Trade in", b, c, b.getPrice());
         c.setDiscountEligible(true);
         return true;
     }
@@ -73,9 +74,7 @@ public class Transaction {
                 ? b.getPrice() * 0.90
                 : b.getPrice();
 
-        if (!inv.removeStock(b)) {
-            return false;
-        }
+        if (!inv.removeStock(b)) return false;
         docTransactions("Purchase", b, c, discount);
         c.setDiscountEligible(false);
         return true;
