@@ -7,23 +7,18 @@ public class Transaction {
     public String getTransactionType() {
         return transactionType;
     }
-
     public String getTransactionDate() {
         return transactionDate;
     }
-
     public String getCustomerName() {
         return customerName;
     }
-
     public String getGameTitle() {
         return gameTitle;
     }
-
     public double getGamePrice() {
         return gamePrice;
     }
-
     private String transactionType;
     private String transactionDate;
     private String customerName;
@@ -108,5 +103,5 @@ public class Transaction {
 
     public boolean managePassword(int p) {
         return p == 3020;
-    }
+    } // didn't know where else to put it
 }

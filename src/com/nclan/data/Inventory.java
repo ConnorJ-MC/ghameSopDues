@@ -7,11 +7,9 @@ public class Inventory {
 
     private final ArrayList<Game> allGames;
     private static Inventory inventoryDB;
-
     public Inventory() {
         allGames = new ArrayList<>();
     }
-
     public static Inventory getInstance() {
         //check if an instance of the class has already been created.
         if (inventoryDB == null) {
@@ -32,7 +30,6 @@ public class Inventory {
     }
 
     public boolean addStock(Game g, int amount) {
-        if (amount == 0) amount = g.getQuantity();
         for (Game b : allGames) {
             if (g.getName().equals(b.getName()) && g.getConsole().equals(b.getConsole())) {
                 b.setQuantity(Math.min(b.getQuantity() + amount, 10));
@@ -56,7 +53,6 @@ public class Inventory {
     }
 
     public boolean removeStock(Game g, int amount) {
-        if (amount == 0) amount = g.getQuantity();
         for (Game b : allGames) {
             if (g.getName().equals(b.getName()) && g.getConsole().equals(b.getConsole())) {
                 if (b.getQuantity() - amount > 0) b.setQuantity(b.getQuantity() - amount);

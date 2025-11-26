@@ -11,7 +11,7 @@ public class Main {
     /**
      *
      *
-     * @param args
+     * @param args to run the program
      */
     public static void main(String[] args) {
         System.out.println("Simple Library singleton");

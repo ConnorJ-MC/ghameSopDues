@@ -9,20 +9,16 @@ public class Customer {
 //    private int customerID;
     private boolean discountEligible;
     private final ArrayList<Customer> customers = new ArrayList<>();
-
     public Customer(String name, String address, boolean discountEligible) {
         this.name = name;
         this.address = address;
 //        customerID = getCustomerID();
         this.discountEligible = discountEligible;
     }
-
     private static Customer customerDB;
-
     public Customer() {
 
     }
-
     public static Customer getInstance() {
         //check if an instance of the class has already been created.
         if (customerDB == null) {
@@ -30,35 +26,27 @@ public class Customer {
         }
         return customerDB;
     }
-
 //    public static void resetID() {
 //        id = 0;
 //    }
-
 //    public static int getCustomerID() {
 //        return ++id;
 //    }
-
 //    public int getId() {
 //        return customerID;
 //    }
-
     public String getAddress() {
         return address;
     }
-
     public String getName() {
         return name;
     }
-
     public boolean isDiscountEligible() {
         return discountEligible;
     }
-
     public void setDiscountEligible(boolean eligible) {
         this.discountEligible = eligible;
     }
-
 //    public String getFormattedUser() {
 //        String formatId = String.format("%03d", customerID);
 //        return getName() + ", (" + formatId + ")";
